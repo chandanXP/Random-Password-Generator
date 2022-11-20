@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Generator</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
+            integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Oswald:wght@600&family=Rubik&display=swap" rel="stylesheet">
+      <style>
+          header{
+            background: linear-gradient(to bottom, #33ccff 0%, #004e92 100%);
+            background-image: url('./static/banner_1.jpg');
+            height: 180px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: var(--standard-white);
+            padding: 10px; display: grid;
+            align-items: center;
+            box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 60%);
+
+          }
+          .heading{
+            text-shadow: 3px 4px 7px rgba(81,67,21,0.8);
+            font-family: 'Oswald', sans-serif;;
+          }
+          p{
+            font-family: 'Rubik', sans-serif;
+          }
+          h5{
+          font-family: 'Arimo', sans-serif;
+          }
+          button{
+            font-family: 'Rubik', sans-serif;
+          }
+
+      </style>
+  </head>
+  <body>
+    <header class="mb-4">
+        <div class="p-5 text-center bg-image" >
+          <div class="heading" style="margin-bottom= 20px">
+
+              <h1 class="text-white" class="mb-3">Random Password Generator 2022</h1>
+          </div>
+        </div>
+    </header>
+    <section class=" container col-lg-4 col-md-4 col-sm-4  justify-content-center" >
+        <div class="card text-center">
+          <div class="card-header">
+              Welcome User
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Generate your random password</h5><br>
+            <p class="card-text">This site helps you to save time while creating your valid password. Password contains
+                AlphaNumeric characters with a random symbol.</p>
+              Password:
+                <input id="my-test" class="form-control text-center" type="text">
+                <button onclick="copy('my-test')" id="copy" class="m-2 btn btn-secondary"  > <i class="fa fa-clone" > </i> Copy</button><br>
+                <button id="gen" type="button" class="btn btn-success ">Generate</button>
+          </div>
+          <div class="card-footer text-muted">
+              Developed by: Chandan Saroj
+          </div>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          $("#gen").click(function () {
+            let pass_range = ""
+            const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            let charactersLength = characters.length;
+            for(let i =0; i<=5; i++){
+                pass_range += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            pass_range += "@";
+            pass_range += Math.floor((Math.random() * 10000) + 1).toString();
+            document.getElementById("my-test").value = pass_range;
+          });
+
+        });
+
+        let copy = (textId) => {
+          //Selects the text in the <input> elemet
+          document.getElementById(textId).select();
+          //Copies the selected text to clipboard
+          document.execCommand("copy");
+        };
+
+    </script>
+
+  </body>
+
+</script>
+</html>
